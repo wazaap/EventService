@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using EventService.Api.Models;
+using EventService.Data;
 using EventService.Entities.EventEntities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,9 +10,11 @@ namespace EventService.Api.Controllers
     [Route("api/[controller]")]
     public class EventsController : Controller
     {
-        public EventsController()
-        {
+        private readonly IEventsRepository _eventsRepository;
 
+        public EventsController(IEventsRepository eventsRepository)
+        {
+            _eventsRepository = eventsRepository;
         }
 
         // GET api/values
@@ -33,7 +36,7 @@ namespace EventService.Api.Controllers
         public void Post([FromBody]CreateEventModel model)
         {
             var e = new Event(model.ApplicationId, model.ItemId, model.TriggerdBy,model.Type);
-            //TODO Save event
+            _eventsRepository.Add(e);
         }
 
         // PUT api/values/5
