@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using EventService.Api.Models;
 using EventService.Data;
 using EventService.Entities.EventEntities;
@@ -36,10 +33,11 @@ namespace EventService.Api.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] CreateEventModel model)
+        public ActionResult Post([FromBody] CreateEventModel model)
         {
             var eventEntity = new Event(model.ApplicationId, model.ItemId, model.TriggeredBy, model.Type);
             _eventsRepository.Add(eventEntity);
+            return Ok();
         }
 
         // PUT api/values/5
