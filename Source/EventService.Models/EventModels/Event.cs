@@ -9,7 +9,7 @@ namespace EventService.Entities.EventEntities
         public Guid Id { get; set; }
         public Guid ApplicationId { get; set; }
         public Guid ItemId { get; set; }
-        public Guid TriggeredBy { get; }
+        public Guid TriggeredBy { get; set; }
         public EventType Type { get; set; }
         public DateTime Triggered { get; set; }
 
@@ -20,12 +20,12 @@ namespace EventService.Entities.EventEntities
 
         public Event(Guid applicationId, Guid itemId, string triggeredBy, EventType eventType)
         {
-            var triggeredId = StringToGUID(triggeredBy);
             Id = Guid.NewGuid();
             ApplicationId = applicationId;
             Type = eventType;
             Triggered = DateTime.UtcNow;
-            TriggeredBy = triggeredId;
+            TriggeredBy = StringToGUID(triggeredBy);
+            ItemId = itemId;
         }
 
         private Guid StringToGUID(string value)
