@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace EventService.Models.EventModels
+namespace EventService.Entities.EventEntities
 {
-    public class EventType
+    public enum EventType
     {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public EventType()
-        {
-            Id = Guid.NewGuid();
-        }
+        Undefined = 0,
+        Created = 1,
+        Updated = 2,
+        Deleted = 3
     }
 }

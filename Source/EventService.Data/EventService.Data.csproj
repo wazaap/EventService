@@ -6,10 +6,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EventService.Models\EventService.Models.csproj" />
+    <ProjectReference Include="..\EventService.Models\EventService.Entities.csproj" />
   </ItemGroup>
 
 </Project>

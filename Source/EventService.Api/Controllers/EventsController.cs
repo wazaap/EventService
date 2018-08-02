@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using EventService.Api.Models;
+using EventService.Entities.EventEntities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventService.Api.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class EventsController : Controller
     {
+        public EventsController()
+        {
+
+        }
+
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()
@@ -18,15 +23,17 @@ namespace EventService.Api.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public ViewEventModel Get(Guid id)
         {
-            return "value";
+            return new ViewEventModel();
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]CreateEventModel model)
         {
+            var e = new Event(model.ApplicationId, model.ItemId, model.TriggerdBy,model.Type);
+            //TODO Save event
         }
 
         // PUT api/values/5

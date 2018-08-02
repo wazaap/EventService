@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{1C67D0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventService.Api", "Source\EventService.Api\EventService.Api.csproj", "{9D97F88D-9025-44ED-8AF6-E12E32823517}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventService.Models", "Source\EventService.Models\EventService.Models.csproj", "{E998243F-D19E-40B8-BF09-83F290C8D0AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventService.Entities", "Source\EventService.Models\EventService.Entities.csproj", "{E998243F-D19E-40B8-BF09-83F290C8D0AA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventService.Data", "Source\EventService.Data\EventService.Data.csproj", "{D8537B82-061D-45FD-BB4E-2F72ECABBC14}"
 EndProject

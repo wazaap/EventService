@@ -31,4 +31,9 @@
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EventService.Data\EventService.Data.csproj" />
+    <ProjectReference Include="..\EventService.Models\EventService.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
