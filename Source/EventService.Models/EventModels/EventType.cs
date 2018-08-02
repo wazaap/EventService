@@ -7,5 +7,7 @@ namespace EventService.Models.EventModels
 {
     public class EventType
     {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
     }
 }
