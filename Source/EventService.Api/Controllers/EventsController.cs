@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using EventService.Api.Models;
 using EventService.Data;
 using EventService.Entities.EventEntities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventService.Api.Controllers
@@ -35,9 +37,15 @@ namespace EventService.Api.Controllers
         [HttpPost]
         public ActionResult Post([FromBody] CreateEventModel model)
         {
-            var eventEntity = new Event(model.ApplicationId, model.ItemId, model.TriggeredBy, model.Type);
-            _eventsRepository.Add(eventEntity);
-            return Ok();
+            try
+            {
+                var eventEntity = new Event(model.ApplicationId, model.ItemId, model.TriggeredBy, model.Type);
+                _eventsRepository.Add(eventEntity);
+                return Ok();
+            } catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,ex.Message);
+            }
         }
 
         // PUT api/values/5
