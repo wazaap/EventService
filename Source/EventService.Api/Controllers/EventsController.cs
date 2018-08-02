@@ -33,6 +33,13 @@ namespace EventService.Api.Controllers
             return "value";
         }
 
+        // GET api/events/item/5
+        [HttpGet("item/{id}")]
+        public IEnumerable<Event> GetByItem(Guid id)
+        {
+            return _eventsRepository.GetAllByItem(id);
+        }
+
         // POST api/values
         [HttpPost]
         public ActionResult Post([FromBody] CreateEventModel model)
@@ -44,7 +51,7 @@ namespace EventService.Api.Controllers
                 return Ok();
             } catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError,ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 
