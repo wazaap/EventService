@@ -8,7 +8,6 @@ namespace EventService.Entities.EventEntities
         public Guid ApplicationId { get; set; }
         public Guid ItemId { get; set; }
         public Guid TriggeredBy { get; }
-
         public EventType Type { get; set; }
         public DateTime Triggered { get; set; }
 
