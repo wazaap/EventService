@@ -1,5 +1,6 @@
 ﻿using EventService.Data.Context;
 using EventService.Entities.EventEntities;
+using EventService.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,8 +40,9 @@ namespace EventService.Data
             return _eventsContext.Events.Where(e => e.ItemId == itemId);
         }
 
-        public IEnumerable<Event> GetAllByTriggerdBy(Guid triggerById)
+        public IEnumerable<Event> GetAllByTriggerdBy(string triggerBy)
         {
+            var triggerById = triggerBy.ToGuid();
             if (!_eventsContext.Events.Any(e => e.TriggeredBy == triggerById))
             {
                 return Enumerable.Empty<Event>();

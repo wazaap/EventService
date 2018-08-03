@@ -9,6 +9,6 @@ namespace EventService.Data
         void Add(Event e);
         IEnumerable<Event> GetAllByApplication(Guid applicationId);
         IEnumerable<Event> GetAllByItem(Guid itemId);
-        IEnumerable<Event> GetAllByTriggerdBy(Guid triggerById);
+        IEnumerable<Event> GetAllByTriggerdBy(string triggerById);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EventService.Shared;
+using System;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -24,17 +25,10 @@ namespace EventService.Entities.EventEntities
             ApplicationId = applicationId;
             Type = eventType;
             Triggered = DateTime.UtcNow;
-            TriggeredBy = StringToGUID(triggeredBy);
+            TriggeredBy = triggeredBy.ToGuid();
             ItemId = itemId;
         }
 
-        private Guid StringToGUID(string value)
-        {
-            // Create a new instance of the MD5CryptoServiceProvider object.
-            MD5 md5Hasher = MD5.Create();
-            // Convert the input string to a byte array and compute the hash.
-            byte[] data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(value));
-            return new Guid(data);
-        }
+
     }
 }

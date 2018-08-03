@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using EventService.Api.Models;
 using EventService.Data;
 using EventService.Entities.EventEntities;
@@ -19,18 +20,17 @@ namespace EventService.Api.Controllers
             _eventsRepository = eventsRepository;
         }
 
-        // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        [HttpGet("item/status/{id}")]
+        public Event GetItemStatus(Guid id)
         {
-            return new string[] { "value1", "value2" };
+            return _eventsRepository.GetAllByItem(id).OrderBy(e => e.Triggered).First();
         }
 
         // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        [HttpGet("/trigger/{id}")]
+        public IEnumerable<Event> GetByTrigger(string id)
         {
-            return "value";
+            return _eventsRepository.GetAllByTriggerdBy(id);
         }
 
         // GET api/events/item/5
@@ -38,6 +38,12 @@ namespace EventService.Api.Controllers
         public IEnumerable<Event> GetByItem(Guid id)
         {
             return _eventsRepository.GetAllByItem(id);
+        }
+
+        [HttpGet("application/{id}")]
+        public IEnumerable<Event> GetByApplication(Guid id)
+        {
+            return _eventsRepository.GetAllByApplication(id);
         }
 
         // POST api/values
@@ -53,18 +59,6 @@ namespace EventService.Api.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }
